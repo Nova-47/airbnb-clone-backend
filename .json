@@ -1,0 +1,28 @@
+[{
+  "name": "House created with DRF",
+  "country": "한국",
+  "city": "서울",
+  "price": 1000,
+  "rooms": 2,
+  "toilets": 2,
+  "description": "Room with amenities and ownder and categories!",
+  "category": 4,
+  "amenities": [6738,2,3],
+  "adress": "321",
+  "pet_friendly": true,
+  "kind": "private_room"
+},
+{
+  "name": "Apt. in 서울",
+  "country": "한국",
+  "city": "서울",
+  "price": 0,
+  "rooms": 12,
+  "toilets": 3,
+  "category": 4,
+  "amenities": [5,2],
+  "description": "ada",
+  "adress": "adsas",
+  "pet_friendly": true,
+  "kind": "entire_place"
+}]

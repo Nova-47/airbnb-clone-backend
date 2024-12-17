@@ -1,0 +1,9 @@
+{
+  "editor.defaultFormatter": "ms-python.python",
+  "python.formatting.provider": "black",
+  "python.formatting.blackPath": "C:\\Users\\bush\\AppData\\Local\\pypoetry\\Cache\\virtualenvs\\airbnb-clone-backend-gGyXML3R-py3.11\\Scripts\\black.exe",
+  "editor.formatOnSave": true,
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  }
+}
