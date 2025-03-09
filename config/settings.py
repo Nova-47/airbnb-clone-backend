@@ -11,16 +11,23 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+import environ
+
+env = environ.Env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-977dq(tmw8xdkl(*!(swde-$*)4e(oo3=^ymk_vrlt(_tpu^%-"
+SECRET_KEY = env("SECRET_KEY")
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -42,10 +49,12 @@ SYSTEM_APPS = [
 
 THIRD_PARTY_APPS = [
     "rest_framework",
+    "rest_framework.authtoken",
+    "corsheaders",
 ]
 
 
-CUSTUM_APPS = [
+CUSTOM_APPS = [
     "common.apps.CommonConfig",
     "users.apps.UsersConfig",
     "rooms.apps.RoomsConfig",
@@ -58,7 +67,7 @@ CUSTUM_APPS = [
     "direct_messages.apps.DirectMessagesConfig",
 ]
 
-INSTALLED_APPS = SYSTEM_APPS + THIRD_PARTY_APPS + CUSTUM_APPS
+INSTALLED_APPS = SYSTEM_APPS + THIRD_PARTY_APPS + CUSTOM_APPS
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -68,6 +77,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -154,3 +164,23 @@ MEDIA_ROOT = "uploads"
 MEDIA_URL = "user-uploads/"
 
 PAGE_SIZE = 3
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.SessionAuthentication",
+        "config.authentication.TrustMeBroAuthentication",
+        "rest_framework.authentication.TokenAuthentication",
+        "config.authentication.JWTAuthentication",
+    ]
+}
+
+CORS_ALLOWED_ORIGINS = ["http://127.0.0.1:3000"]
+
+CORS_ALLOW_CREDENTIALS = True
+
+CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:3000"]
+
+GH_SECRET = env("GH_SECRET")
+
+CF_ID = env("CF_ID")
+CF_TOKEN = env("CF_TOKEN")

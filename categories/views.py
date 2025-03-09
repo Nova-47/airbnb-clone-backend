@@ -10,11 +10,9 @@ from .serializers import CategorySerializer
 class CategoryViewSet(ModelViewSet):
 
     serializer_class = CategorySerializer
-    queryset = Category.objects.all()
-
-
-
-
+    queryset = Category.objects.filter(
+        kind=Category.CategoryKindChocies.ROOMS,
+    )
 
 
 """

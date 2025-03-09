@@ -29,7 +29,7 @@ class Photo(CommonModel):
 
 class Video(CommonModel):
 
-    file = models.URLField()
+    file = models.FileField()
     experience = models.OneToOneField(
         "experiences.Experience",
         on_delete=models.CASCADE,

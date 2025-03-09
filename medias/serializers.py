@@ -9,4 +9,5 @@ class PhotoSerializer(ModelSerializer):
             "pk",
             "file",
             "description",
+            "room",
         )
