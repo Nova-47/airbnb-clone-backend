@@ -29,6 +29,10 @@ class PublicUserSerializer(TinyUserSerializer):
 
 
 class PrivateUserSerializer(serializers.ModelSerializer):
+    gender = serializers.CharField(required=False, default="not_specified")
+    language = serializers.CharField(required=False, default="en")
+    currency = serializers.CharField(required=False, default="USD")
+
     class Meta:
         model = User
         exclude = (

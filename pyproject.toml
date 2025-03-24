@@ -23,6 +23,11 @@ django-cors-headers = "^4.7.0"
 requests = "^2.32.3"
 prettier = "^0.0.7"
 black = "^25.1.0"
+dj-database-url = "^2.3.0"
+psycopg2-binary = "^2.9.10"
+whitenoise = {extras = ["brotli"], version = "^6.9.0"}
+gunicorn = "^23.0.0"
+uvicorn = "^0.34.0"
 
 
 [build-system]
