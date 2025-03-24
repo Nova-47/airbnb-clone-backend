@@ -15,6 +15,7 @@ import os
 import environ
 import dj_database_url
 import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
 env = environ.Env()
 
@@ -210,5 +211,6 @@ CF_TOKEN = env("CF_TOKEN")
 if not DEBUG:
     sentry_sdk.init(
         dsn="https://f399a7b4a585d433ade75ac8aebdc24a@o4509030663716864.ingest.us.sentry.io/4509030667190272",
+        integrations=[DjangoIntegration()],
         send_default_pii=True,
     )
